@@ -6,7 +6,7 @@ import makeWASocket, {
 } from "@whiskeysockets/baileys";
 import * as fs from "fs";
 
-const badWords = ["kasar1", "kasar2", "anjing", "goblok"];
+const badWords = ["asu", "ngentot", "anjing", "goblok", 'memek', 'tempek', 'jancok', 'kontol', 'kintil', 'babi', 'peli', 'pentel'];
 const spamTracker: Record<string, { lastMessage: string; lastTime: number }> = {};
 const violationScores: Record<string, number> = {};
 
@@ -31,7 +31,7 @@ async function startBot() {
 
         if (spamData.lastMessage === textMsg) {
             const hoursPassed = (now - spamData.lastTime) / (1000 * 60 * 60);
-            if (hoursPassed < 5) {
+            if (hoursPassed < 6) {
                 await sock.sendMessage(groupId, {
                     text: `@${senderID.split("@")[0]}, kamu mengirim pesan yang sama. Tunggu 5 jam sebelum kirim ulang.`,
                     mentions: [senderID]
